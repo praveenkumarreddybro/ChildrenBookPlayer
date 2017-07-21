@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.effone.childrenbookplayer.MainActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+<com.effone.childrenbookplayer.view.LrcView
+    android:maxHeight="250dp"
+    android:maxWidth="250dp"
+    android:layout_height="0dp"
+    android:layout_weight="0.72"
+    android:layout_width="match_parent"
+    android:id="@+id/lrcView"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="384dp"
+        android:src="@drawable/image"
+        android:id="@+id/img_schoolImages"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight=".2">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2"
+            android:gravity="center"
+            android:id="@+id/tv_previous"
+            android:src="@mipmap/back_press"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".6"
+            android:id="@+id/tv_pause"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_pause"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2"
+            android:gravity="center"
+            android:id="@+id/tv_next"
+            android:src="@mipmap/fast_forward"/>
+    </LinearLayout>
+
+</LinearLayout>
