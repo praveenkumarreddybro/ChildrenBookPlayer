@@ -127,7 +127,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             public void onLrcSeeked(int newPosition, LrcRow row) {
                 if (mPlayer != null) {
-                    Log.d(TAG, "onLrcSeeked:" + row.time);
+                    Log.d(TAG, "onLrcSeeked: " + row.time);
                     mPlayer.seekTo((int)row.time);
                 }
             }
