@@ -89,44 +89,48 @@ public class LrcView extends View implements ILrcView{
 		// 3, draw rows below highlight row.
 
 		// 1 highlight row
-		String highlightText = mLrcRows.get(mHignlightRow).content;
-		int highlightRowY = height / 2 - mLrcFontSize;
-		mPaint.setColor(mHignlightRowColor);
-		mPaint.setTextSize(mLrcFontSize);
-		mPaint.setTextAlign(Align.CENTER);
-		canvas.drawText(highlightText, rowX, highlightRowY, mPaint);
+		try {
+			String highlightText = mLrcRows.get(mHignlightRow).content;
+			int highlightRowY = height / 2 - mLrcFontSize;
+			mPaint.setColor(mHignlightRowColor);
+			mPaint.setTextSize(mLrcFontSize);
+			mPaint.setTextAlign(Align.CENTER);
+			canvas.drawText(highlightText, rowX, highlightRowY, mPaint);
 
-		if(mDisplayMode == DISPLAY_MODE_SEEK){
-			// draw Seek line and current time when moving.
-			mPaint.setColor(mSeekLineColor);
-			canvas.drawLine(mSeekLinePaddingX, highlightRowY, width - mSeekLinePaddingX, highlightRowY, mPaint);
-			mPaint.setColor(mSeekLineTextColor);
-			mPaint.setTextSize(mSeekLineTextSize);
-			mPaint.setTextAlign(Align.LEFT);
-			canvas.drawText(mLrcRows.get(mHignlightRow).strTime, 0, highlightRowY, mPaint);
-		}
+			if (mDisplayMode == DISPLAY_MODE_SEEK) {
+				// draw Seek line and current time when moving.
+				mPaint.setColor(mSeekLineColor);
+				canvas.drawLine(mSeekLinePaddingX, highlightRowY, width - mSeekLinePaddingX, highlightRowY, mPaint);
+				mPaint.setColor(mSeekLineTextColor);
+				mPaint.setTextSize(mSeekLineTextSize);
+				mPaint.setTextAlign(Align.LEFT);
+				canvas.drawText(mLrcRows.get(mHignlightRow).strTime, 0, highlightRowY, mPaint);
+			}
 
-		// 2 above rows
-		mPaint.setColor(mNormalRowColor);
-		mPaint.setTextSize(mLrcFontSize);
-		mPaint.setTextAlign(Align.CENTER);
-		rowNum = mHignlightRow - 1;
-		rowY = highlightRowY - mPaddingY - mLrcFontSize;
-		while( rowY > -mLrcFontSize && rowNum >= 0){
-			String text = mLrcRows.get(rowNum).content;
-			canvas.drawText(text, rowX, rowY, mPaint);
-			rowY -=  (mPaddingY + mLrcFontSize);
-			rowNum --;
-		}
+			// 2 above rows
+			mPaint.setColor(mNormalRowColor);
+			mPaint.setTextSize(mLrcFontSize);
+			mPaint.setTextAlign(Align.CENTER);
+			rowNum = mHignlightRow - 1;
+			rowY = highlightRowY - mPaddingY - mLrcFontSize;
+			while (rowY > -mLrcFontSize && rowNum >= 0) {
+				String text = mLrcRows.get(rowNum).content;
+				canvas.drawText(text, rowX, rowY, mPaint);
+				rowY -= (mPaddingY + mLrcFontSize);
+				rowNum--;
+			}
 
-		// 3 below rows
-		rowNum = mHignlightRow + 1;
-		rowY = highlightRowY + mPaddingY + mLrcFontSize;
-		while( rowY < height && rowNum < mLrcRows.size()){
-			String text = mLrcRows.get(rowNum).content;
-			canvas.drawText(text, rowX, rowY, mPaint);
-			rowY += (mPaddingY + mLrcFontSize);
-			rowNum ++;
+			// 3 below rows
+			rowNum = mHignlightRow + 1;
+			rowY = highlightRowY + mPaddingY + mLrcFontSize;
+			while (rowY < height && rowNum < mLrcRows.size()) {
+				String text = mLrcRows.get(rowNum).content;
+				canvas.drawText(text, rowX, rowY, mPaint);
+				rowY += (mPaddingY + mLrcFontSize);
+				rowNum++;
+			}
+		}catch (Exception e){
+
 		}
 	}
 
